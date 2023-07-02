@@ -1,0 +1,478 @@
+< html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotelt</title>
+</head>
+ 
+<body>
+	<script> 
+	
+		//Nome do hotel
+		var  nomeH  =  prompt ( 'Qual o nome do hotel?' ) ;
+        while ( nomeH  ==  ' ' ) {
+			alert ( `Por favor, informe o nome do hotel.` ) ;
+			nomeH  =  prompt ( 'Qual o nome do hotel?' ) ;
+		}
+        alert ( `O nome do hotel é ${ nomeH } ` ) ;
+
+        //Nome do usuário
+        var  nomeUser  =  prompt ( 'Qual é o seu nome?' ) ;
+        while ( nomeUser  ==  ' ' ) {
+			alert ( `Por favor, informe seu nome.` ) ;
+			nomeUser  =  prompt ( 'Qual é o seu nome?' ) ;
+		}
+
+		//Verificar senha
+		var  senha  =  parseInt ( prompt ( 'Digite sua senha:' ) ) ;
+        while ( isNaN ( senha )  ||  senha  !=  2678 ) {
+            alert ( 'Senha incorreta, digite novamente' ) ;
+            senha  =  parseInt ( prompt ( 'Digite sua senha:' ) ) ;
+        }
+
+		var  hospedes  =  [ ] ;
+
+		//Mensagem de boas vindas
+		alert ( `Bem vindo ao Hotel ${ nomeH } , ${ nomeUser } . É um imenso prazer ter você por aqui!` ) ;
+
+		função  início ( )  {
+var  escolha  =  parseInt ( prompt ( 'Selecione uma opção:\n 1. Reserva de Quartos\n 2. Cadastro Hóspedes (Com limites)\n 3. Reserva de Eventos\n 4. Reserva de Buffet\n 5. Reserva de Auditório \n 6. Reserva de Restaurante\n 7. Abastecer Carros\n 8. Manutenção de Ar Condicionado\n 9. Sair' ) ) ;
+
+			switch ( escolha ) {
+				caso  1 :
+					reserva_quartos ( ) ;
+				quebrar
+				caso  2 :
+					cadastro_hospedes ( ) ; 
+				quebrar
+				caso  3 :
+					eventos ( ) ; 
+				quebrar
+				caso  4 :
+					buffet ( ) ;
+				quebrar
+				caso  5 :
+					auditório ( ) ;
+				quebrar
+				caso  6 :
+					restaurante ( ) ;
+				quebrar
+				caso  7 :
+					abastecer_carros ( ) ;
+				quebrar
+				caso  8 :
+					manutencaoAr ( ) ;
+				quebrar
+				caso  9 :
+					sair ( ) ;
+				quebrar
+				padrão :
+					erro ( ) ; 
+				quebrar
+			}
+		}
+função  cadastro_hospedes ( )  {
+			alert ( `HOTEL ${ nomeH } - CADASTRO DE HÓSPEDES` ) ;
+
+			var  listaHospede  =  [ { nomeHospede : '' ,  idadeHospede : '' } ] ;
+			var  contGratuita  =  0 ,  contMeia  =  0 ,  contInteira  =  0 ,  soma  =  0 ,  somaMeia  =  0 ,  somaInteira  =  0 ;
+
+			var  vlDiaria  =  parseFloat ( prompt ( 'Qual o valor padrão da diária?' ) ) ;
+			while ( isNaN ( vlDiaria )  ||  vlDiaria  <=  0  ||  vlDiaria  ==  ' ' ) {
+				alert ( `Por favor, informe um valor válido!` ) ;
+				vlDiaria  =  prompt ( 'Qual o valor padrão da diária?' ) ;
+			}
+			
+			listaHospede . nomeHospede  =  prompt ( 'Qual o nome do hóspede?' ) ;
+			while ( listaHospede . nomeHospede  ==  ' ' ) {
+				alert ( `Por favor, informe o nome do hóspede` ) ;
+				listaHospede . nomeHospede  =  prompt ( 'Qual o nome do hóspede?' ) ;
+			}
+			
+			while ( listaHospede . nomeHospede  !=  'Pare'  &&  listaHospede . nomeHospede  !=  'pare' ) {
+				
+				listaHospede . idadeHospede  =  prompt ( 'Qual a idade do hóspede?' ) ;
+				while ( isNaN ( listaHospede . idadeHospede )  ||  listaHospede . idadeHospede  ==  ' ' ) {
+					alert ( `Por favor, informe uma idade válida, ${ nomeUser } ` ) ;
+					listaHospede . idadeHospede  =  prompt ( 'Qual a idade do hóspede?' ) ;
+				}
+
+				if ( listaHospede . idadeHospede  <=  6 ) {
+					alert ( ` ${ listaHospede . nomeHospede } , cadastrado(a) com sucesso. ${ listaHospede . nomeHospede } possui gratuidade.` ) ;
+					contGratuita  +=  1 ;
+				}
+else  if ( listaHospede . idadeHospede  >=  60 ) {
+					alert ( ` ${ listaHospede . nomeHospede } , cadastrado(a) com sucesso. ${ listaHospede . nomeHospede } paga meia.` ) ;
+					contMeia  += 1 ;
+					somaMeia  =  ( vlDiaria / 2 )  *  contMeia ;
+				}
+				outra coisa {
+					alert ( ` ${ listaHospede . nomeHospede } , cadastrado(a) com sucesso` ) ;
+					contInteira  +=  1 ;
+					somaInteira  =  vlDiaria  *  contInteira
+				}
+				listaHospede . nomeHospede  =  prompt ( 'Qual o nome do hóspede?' ) ;
+				
+			}
+			//fim enquanto
+			
+			soma  =  somaInteira  +  somaMeia ;
+			alert ( ` ${ nomeUser } , o total de hospedagem é: R$ ${ soma } ; ${ contGratuita } gratuidade(s); ${ contMeia } meia(s)` ) ;
+
+			início ( ) ;
+		}
+		//fim cadastro_hospedes()
+function  cadastrarHospedes ( ) {
+            var  opcao  =  parseInt ( prompt ( 'Selecione uma opção:\n 1. Cadastrar cliente\n 2. Pesquisar cliente\n 3. Sair' ) ) ;
+            switch ( opção ) {
+                caso  1 :
+                    cadastro ( ) ;
+                quebrar
+                caso  2 :
+                    pesquisa ( ) ;
+                quebrar
+                caso  3 :
+                    sairCadastro ( ) ; 
+                quebrar
+                padrão :
+                    erroCadastro ( ) ;
+                quebrar
+            }
+        }
+  função  cadastro ( ) {
+
+            if ( hospedes . comprimento  >=  15 ) {
+                alert ( 'Máximo de cadastro atingido' ) ;
+            }
+            outra coisa {
+                var  nomeHospede  =  prompt ( 'Qual o nome do hóspede?' ) ;
+                hospedes . push ( nomeHospede ) ;
+                alert ( `Hóspede ${ nomeHospede } foi cadastrado(a) com sucesso!` ) ;
+            }
+            cadastrarHospedes ( ) ;
+        }
+       
+		função  pesquisa ( ) {
+
+            var  pesquisa  =  prompt ( 'Qual o nome do hóspede?' ) ;
+            if ( hospedes . inclui ( pesquisa ) ) {
+                alert ( `Hóspede ${ pesquisa } foi encontrado(a)!` ) ;
+            }
+            outra coisa {
+                alert ( `Hóspede ${ pesquisa } não foi encontrado!` ) ;
+            }
+            cadastrarHospedes ( ) ;
+        }
+        function  erroCadastro ( )  {
+
+            alert ( 'Por favor, informe um número entre 1 e 2' ) ;
+            cadastrarHospedes ( ) ;
+        }
+        função  sairCadastro ( )  {
+
+            var  confirma  =  confirm ( 'Você deseja sair?' ) ;
+            se  ( confirma )  {
+                início ( ) ;
+            }  senão  {
+                cadastrarHospedes ( ) ;
+            }
+        }
+		//fim cadastroHospedes()
+
+		função  eventos ( ) {
+            var  total  =  0 ,  hrGarcon  =  10,5 ;
+
+            var  duracaoEvento  =  parseFloat ( prompt ( 'Qual a duração do evento em horas?' ) ) ;
+			while ( isNaN ( duracaoEvento )  ||  duracaoEvento  ===  ' ' ) {
+				alert ( 'Por favor, informe apenas números' ) ;
+				duracaoEvento  =  parseInt ( prompt ( 'Qual o número de convidados para o evento?' ) ) ;
+			}
+
+            var  qtGarcon  =  parseInt ( prompt ( 'Quantos garçons serão necessários?' ) ) ;
+			while ( isNaN ( qtGarcon )  ||  qtGarcon  ===  ' ' ) {
+				alert ( 'Por favor, informe apenas números' ) ;
+				qtGarcon  =  parseInt ( prompt ( 'Quantos garçons serão necessários?' ) ) ;
+			}
+ total  =  parseFloat ( ( duracaoEvento  *  hrGarcon )  *  qtGarcon ) ;
+
+            alert ( `Custo total de: R$ ${ total } ` ) ;
+
+            var  reserva  =  prompt ( 'Gostaria de confirmar a reserva? S/N' ) ;
+            if ( reserva  ===  'S'  ||  reserva  ===  's' ) {
+                alert ( ` ${ nomeUser } , reserva efetuada com sucesso.` ) ;
+            }
+            outra coisa {
+                alert ( ` ${ nomeUser } , reserva não efetuada.` ) ;
+            }     
+            início ( ) ;           
+        }
+		//fim eventos()
+
+		 bufê de função ( ) {
+			var  agua  =  0,5 ,  café  =  0,2 ,  salgado  =  7 ,  total  =  0 ,  qtAgua  =  0 ,  qtCafe  =  0 ,  qtSalg  =  0 ;
+
+			var  qtConvidados  =  parseInt ( prompt ( 'Qual o número de convidados para o evento?' ) ) ;
+			while ( isNaN ( qtConvidados )  ||  qtConvidados  ===  ' ' ) {
+				alert ( 'Por favor, informe apenas números' ) ;
+				qtConvidados  =  parseInt ( prompt ( 'Qual o número de convidados para o evento?' ) ) ;
+			}
+
+			if ( qtConvidados  > 350 ) {
+				alert ( 'Quantidade de convidados superior à capacidade máxima.' ) ;
+				buffet ( ) ;
+			}
+			else  if ( qtConvidados  <=  0 ) {
+				alert ( 'Informação inválida' ) ;
+				buffet ( ) ;
+			}
+			qtAgua  =  Math . round (  agua  *  qtConvidados ) ;
+			qtCafe  =   Math . rodada ( café  *  qtConvidados ) ;
+			qtSalg  =   Math . rodada ( salgado  *  qtConvidados ) ;
+
+			total  =  parseFloat ( ( qtCafe  *  0.8 )  +  ( qtAgua  *  0.4 )  +  ( qtSalg  *  0.34 ) ) . toFixed ( 2 ) ;
+
+			alert ( `O evento precisará de ${ qtCafe } litros de café, ${ qtAgua } litros de água e ${ qtSalg } salgados.\n O custo total do evento será de R$ ${ total } ` ) ;
+			
+			var  reserva  =  prompt ( 'Gostaria de confirmar a reserva? S/N' ) ;
+			if ( reserva  ===  'S'  ||  reserva  ===  's' ) {
+				alert ( ` ${ nomeUser } , reserva efetuada com sucesso.` ) ;
+			}
+			else  if ( reserva  ===  'N'  ||  reserva  ===  'n' ) {
+				alert ( ` ${ nomeUser } , reserva não efetuada.` ) ;
+			}
+início ( ) ;
+		}
+		//fim buffet()
+
+		função  auditório ( ) {
+			var  audLaranja  =  150 ;
+			var  convidado  =  parseInt ( prompt ( 'Qual o número de convidados para o evento?' ) ) ;
+			
+			if ( isNaN ( convidado )  ||  convidado  ===  ' ' ) {
+				alert ( 'Por favor, informe apenas números' ) ;
+				convidado  =  parseInt ( prompt ( 'Qual o número de convidados para o evento?' ) ) ;
+			}
+			else  if ( convidado  <= 150 ) {
+				alert ( `Use o auditório Laranja` ) ;
+
+				var  reserva  =  prompt ( 'Gostaria de confirmar a reserva? S/N' ) ;
+				if ( reserva  ===  'S'  ||  reserva  ===  's' ) {
+					alert ( ` ${ nomeUser } , reserva efetuada com sucesso.` ) ;
+				}
+				else  if ( reserva  ===  'N'  ||  reserva  ===  'n' ) {
+					alert ( ` ${ nomeUser } , reserva não efetuada.` ) ;
+				}
+			}
+			//Aqui eu já fiz a soma dos 150 + 70
+			else  if ( convidou  <=  220 ) {
+				contaL  =  convidado  -  audLaranja ;
+				alert ( `Use o auditório Laranja (inclua mais ${ contAL } cadeiras)` ) ;
+
+				var  reserva  =  prompt ( 'Gostaria de confirmar a reserva? S/N' ) ;
+				if ( reserva  ===  'S'  ||  reserva  ===  's' ) {
+					alert ( ` ${ nomeUser } , reserva efetuada com sucesso.` ) ;
+				}
+				else  if ( reserva  ===  'N'  ||  reserva  ===  'n' ) {
+					alert ( ` ${ nomeUser } , reserva não efetuada.` ) ;
+				}
+			}
+			else  if ( convidado  >  350  ||  convidado  <=  0  ) {
+				alert ( 'Número de convidados inválidos' ) ;
+			}
+			outra coisa {
+				alert ( 'Use o auditório Colorado' ) ;
+
+				var  reserva  =  prompt ( 'Gostaria de confirmar a reserva? S/N' ) ;
+				if ( reserva  ===  'S'  ||  reserva  ===  's' ) {
+					alert ( ` ${ nomeUser } , reserva efetuada com sucesso.` ) ;
+				}
+				else  if ( reserva  ===  'N'  ||  reserva  ===  'n' ) {
+					alert ( ` ${ nomeUser } , reserva não efetuada.` ) ;
+				}
+}
+			início ( ) ;
+		}
+		//fim auditório()
+
+		função  restaurante ( ) {
+			var  hora ;
+			var  nomeEmpresa ;
+			var  dia  =  prompt ( 'Qual o dia do seu evento?' ) ;
+
+			if ( dia  ===  'segunda'  ||  dia  ===  'terca'  ||  dia  ===  'terça'  ||  dia  ===  'quarta'  ||  dia  ===  'quinta'  ||  dia  == =  'sexta'  ||  dia  ===  'Segunda'  ||  dia  ===  'Terca'  ||  dia  === 'Terça'  ||  dia  ===  'Quarta'  ||  dia  ===  'Quinta'  | |  dia  === <ai=48>'Sexta'  ) {
+				
+				hora  =  parseInt ( prompt ( 'Qual a hora do seu evento?' ) ) ;
+				while ( isNaN ( hora )  ||  hora  ===  ' ' ) {
+					alert ( 'Por favor, informe apenas números' ) ;
+					hora  =  parseInt ( prompt ( 'Qual a hora do seu evento?' ) ) ;
+				}
+
+				if ( hora  >=  7  &&  hora  <=  23 ) {
+					nomeEmpresa  =  prompt ( 'Qual o nome da empresa?' ) ;
+					alert ( `Restaurante reservado para ${ nomeEmpresa } . ${ dia } às ${ hora } hs` ) ;
+				}
+				outra coisa {
+					alerta ( 'Restaurante indisponível' ) ;
+				}
+			}
+			else  if ( dia  ===  'sabado'  ||  dia ===  'sábado'  ||  dia  ===  'domingo'  ||  dia  ===  'Sabado'  ||  dia  ===  'Sábado'  ||  dia  = ==  'Domingo' ) {
+
+				hora  =  parseInt ( prompt ( 'Qual a hora do seu evento' ) ) ;
+				while ( isNaN ( hora )  ||  hora  ===  ' ' ) {
+					alert ( 'Por favor, informe apenas números' ) ;
+					hora  =  parseInt ( prompt ( 'Qual a hora do seu evento?' ) ) ;
+				}
+
+				if ( hora  >=  7  &&  hora  <=  15 ) {
+					nomeEmpresa  =  prompt ( 'Qual o nome da empresa?' ) ;
+					alert ( `Restaurante reservado para ${ nomeEmpresa } . ${ dia } às ${ hora } hs` ) ;
+				}
+				outra coisa {
+					alerta ( 'Restaurante indisponível' ) ;
+				}
+			}
+			outra coisa {
+				alert ( 'Por favor, informe um dia de semana válido' ) ;
+			}
+			início ( ) ;
+		}
+		//fim restaurante()
+função  abastecer_carros ( )  {
+			alert ( ʻHOTEL ${ nomeH } - ABASTECER` ) ;
+
+			var  tanqueCarro  =  42 ;
+
+			var  gasolinaWO  =  parseFloat ( prompt ( 'Qual o valor da gasolina no posto Wayne Oil?' ) ) ;
+			while ( isNaN ( gasolinaWO )  ||  gasolinaWO  ===  ' ' ) {
+				alert ( 'Por favor, informe apenas números' ) ;
+				gasolinaWO  =  parseFloat ( prompt ( 'Qual o valor da gasolina no posto Wayne Oil?' ) ) ;
+			}
+
+			var  alcoolWO  =  parseFloat ( prompt ( 'Qual o valor do álcool no posto Wayne Oil?' ) ) ;
+			while ( isNaN ( alcoolWO )  ||  alcoolWO  ===  ' ' ) {
+				alert ( 'Por favor, informe apenas números' ) ;
+				alcoolWO  =  parseFloat ( prompt ( 'Qual o valor do álcool no posto Wayne Oil?' ) ) ;
+			}
+
+			var  gasolinaSP  =  parseFloat ( prompt ( 'Qual o valor da gasolina no posto Stark Petrol?' ) ) ;
+			while ( isNaN ( gasolinaSP )  ||  gasolinaSP  ===  ' ' ) {
+				alert ( 'Por favor, informe apenas números' ) ;
+				gasolinaSP  =  parseFloat ( prompt ( 'Qual o valor da gasolina no posto Stark Petrol?' ) ) ;
+			}
+			var  alcoolSP  =  parseFloat ( prompt ( 'Qual o valor do álcool no posto Stark Petrol?' ) ) ;
+			while ( isNaN ( alcoolSP )  ||  alcoolSP  ===  ' ' ) {
+				alert ( 'Por favor, informe apenas números' ) ;
+				alcoolSP  =  parseFloat ( prompt ( 'Qual o valor do álcool no posto Stark Petrol?' ) ) ;
+			}
+
+			var  calcAlcoolWO  =  ( alcoolWO  *  100 )  /  gasolinaWO ;
+			var  porcAlcoolWO  =  100  -  calcAlcoolWO ;
+
+			var  calcAlcoolSP  =  ( alcoolSP  *  100 )  /  gasolinaSP ;
+			var  porcAlcoolSP  =  100  -  calcAlcoolSP ;
+			
+			if ( alcoolWO  <=  alcoolSP  &&  porcAlcoolWO  >=  30 ) {
+				alert ( ` ${ nomeUser } , é mais barato abastecer com álcool no posto Wayne Oil` ) ;
+				alert ( `O total será de R$$ { alcoolWO  *  tanqueCarro } ` ) ;
+			}
+			else  if ( alcoolSP  <  alcoolWO  &&  porcAlcoolSP  >= 30 ) {
+				alert ( ` ${ nomeUser } , é mais barato abastecer com álcool no posto Stark Petrol` ) ;
+				alert ( `O total será de R$$ { alcoolSP  *  tanqueCarro } ` ) ;
+			}
+			else  if ( gasolinaWO  <  gasolinaSP ) {
+				alert ( ` ${ nomeUser } , é mais barato abastecer com gasolina no posto Wayne Oil` ) ;
+				alert ( `O total será de R$$ { gasolinaWO  *  tanqueCarro } ` ) ;
+			}
+			outra coisa {
+				alert ( ` ${ nomeUser } , é mais barato abastecer com gasolina no Stark Petrol` ) ;
+				alert ( `O total será de R$$ { gasolinaSP  *  tanqueCarro } ` ) ;
+			}
+	início ( ) ;
+		}
+		//fim abastercer_carros()
+
+		function  manutencaoAr ( )  {
+
+			let  empresas  =  [ ] ;
+			let  orcamento  =  [ ] ;
+			var  nomeEmpresa ;
+			var  confirma  =  'S' ;
+			var  valorAparelho ,  qtdAparelhos ,  porcDesconto ,  minAparelho ,  desconto  =  0 ,  soma  =  0 ,  valorFinal  =  0 ;
+			
+			while ( confirma  ==  'S'  ||  confirma  ==  's'  ) {
+				nomeEmpresa  =  prompt ( 'Qual o nome da empresa?' ) ;
+				empresas . push ( nomeEmpresa ) ;
+
+				valorAparelho  =  parseFloat ( prompt ( 'Qual o valor por aparelho?' ) ) ;
+				while ( isNaN ( valorAparelho )  ||  valorAparelho  ===  ' ' ||  valorAparelho  <=  0 ) {
+					alert ( 'Por favor, informe apenas números válidos' ) ;
+					valorAparelho  =  parseFloat ( prompt ( 'Qual o valor por aparelho?' ) ) ;
+				}
+
+				qtdAparelhos  =  parseInt ( prompt ( 'Qual a quantidade de aparelho?' ) ) ;
+				while ( isNaN ( qtdAparelhos )  ||  qtdAparelhos  ===  ' '  ||  qtdAparelhos  <=  0 ) {
+					alert ( 'Por favor, informe apenas números válidos' ) ;
+					qtdAparelhos  =  parseInt ( prompt ( 'Qual a quantidade de aparelho?' ) ) ;
+				}
+
+				porcDesconto  =  parseFloat ( prompt ( 'Qual a porcentagem de desconto?' ) ) ;
+				while ( isNaN ( porcDesconto )  ||  porcDesconto  ===  ' '  ||  porcDesconto  <  0 ) {
+					alert ( 'Por favor, informe apenas números válidos' ) ;
+					porcDesconto  =  parseFloat ( prompt ( 'Qual a porcentagem de desconto?' ) ) ;
+				}
+
+				minAparelho  =  parseInt ( prompt ( 'Qual o número mínimo de aparelhos para conseguir o desconto?' ) ) ;
+				while ( isNaN ( minAparelho )  ||  minAparelho  ===  ' '  ||  minAparelho  <  0 ) {
+					alert ( 'Por favor, informe apenas números válidos' ) ;
+					minAparelho  =  parseInt ( prompt ( 'Qual o número mínimo de aparelhos para conseguir o desconto?' ) ) ;
+				}
+
+				soma  =  ( valorAparelho  *  qtdAparelhos ) ;
+				desconto  =  ( soma  *  porcDesconto ) / 100 ;
+				valorFinal  =  ( soma  -  desconto ) . toFixed ( 2 ) ;
+				orcamento . push ( valorFinal ) ;
+
+				if ( minAparelho  <=  qtdAparelhos ) {
+					alert ( `Parabéns! Desconto de R$ ${ desconto } ` ) ;
+					alert ( `O serviço de ${ nomeEmpresa } custará R$$ { valorFinal } ` ) ;
+				}
+				outra coisa {
+					alerta ( 'Sem desconto' ) ;
+					alert ( `O serviço de ${ nomeEmpresa } custará R$ ${ soma } ` ) ;
+				}
+				
+				confirma  =  prompt ( `Deseja informar novos dados, ${ nomeUser } ? (S/N)` ) ;
+			}
+
+
+			var  minValor  =  Math . min ( ... orcamento ) . toFixed ( 2 ) ;
+			var  index  =  orcamento . indexOf ( minValor ) ;
+
+			console . registro ( índice ) ;
+
+			alert ( `O orçamento de menor valor é o ${ empresas [ index ] } por ${ minValor } ` ) ;
+			início ( ) ;
+		}
+		//fim manuntencaoAr()
+
+
+		função  erro ( )  {
+			alert ( 'Por favor, informe um número entre 1 e 10' ) ;
+			início ( ) ;
+		}
+
+		função  sair ( )  {
+			var  confirma  =  confirm ( 'Você deseja sair?' ) ;
+			se  ( confirma )  {
+				alert ( `Muito obrigado e até logo, ${ nomeUser } ` ) ;
+				janela . fechar ( ) ;
+			}  senão  {
+				início ( ) ;
+			}
+		}
+
+		início ( ) ;
+	
+	</ script >
+  </body>
+</html> 
